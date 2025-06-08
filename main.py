@@ -42,18 +42,19 @@ miliseconds_label.grid(column=7, row=0, padx=4,pady=4)
 
 # Frame
 opt_rep = ttk.Frame(window)
+opt_rep.pack()
 # Click options FRAME
 click_opt = ttk.Labelframe(opt_rep, text='Click options')
-click_opt.grid(fill='x', anchor='nw')
+click_opt.grid(column=1,row=0, padx=5, sticky='e')
 ttk.Button(click_opt, text='button').pack()
 
 # Click repeat FRAME
 click_rep = ttk.Labelframe(opt_rep, text='Click repeat')
-click_rep.grid(fill='x', anchor='ne')
-ttk.Button(click_rep, text='button').pack()
+click_rep.grid(column=0,row=0, padx=5, sticky='w')
+ttk.Button(click_rep, text='button').pack(side='left')
 
 # Cursor position FRAME
-cursor_pos = ttk.Labelframe(window, text='Text position')
+cursor_pos = ttk.Labelframe(window, text='Cursor position')
 cursor_pos.pack()
 ttk.Button(cursor_pos, text='button').pack()
 
