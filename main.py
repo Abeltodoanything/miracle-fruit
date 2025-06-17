@@ -18,26 +18,34 @@ top = int(comp_height / 2 - window_height / 2)
 window.geometry(f'{window_width}x{window_height}+{left}+{top}')
 
 # Click interval FRAME
+
+hours_var = ttk.IntVar(value=0)
+mins_var = ttk.IntVar(value=0)
+secs_var = ttk.IntVar(value=0)
+miliseconds_var = ttk.IntVar(value=100)
+
+click_rep_var = ttk.IntVar(value=0)
+
 click_int = ttk.Labelframe(window, text='Click interval')
 click_int.pack(pady=(10, 5), fill="x", padx=5)
 
 
-hours_entry = ttk.Entry(click_int, width=7, justify='right')
+hours_entry = ttk.Entry(click_int, width=7, justify='right', textvariable=hours_var)
 hours_entry.grid(column=0, row=0, padx=4, pady=4)
 hours_label = ttk.Label(click_int, text='hours')
 hours_label.grid(column=1, row=0, padx=4, pady=4)
 
-mins_entry = ttk.Entry(click_int, width=7, justify='right')
+mins_entry = ttk.Entry(click_int, width=7, justify='right', textvariable=mins_var)
 mins_entry.grid(column=2, row=0, padx=4, pady=4)
 mins_label = ttk.Label(click_int, text='mins')
 mins_label.grid(column=3, row=0, padx=4, pady=4)
 
-secs_entry = ttk.Entry(click_int, width=7, justify='right')
+secs_entry = ttk.Entry(click_int, width=7, justify='right', textvariable=secs_var)
 secs_entry.grid(column=4, row=0, padx=4, pady=4)
 secs_label = ttk.Label(click_int, text='secs')
 secs_label.grid(column=5, row=0, padx=4, pady=4)
 
-miliseconds_entry = ttk.Entry(click_int, width=7, justify='right')
+miliseconds_entry = ttk.Entry(click_int, width=7, justify='right', textvariable=miliseconds_var)
 miliseconds_entry.grid(column=6, row=0, padx=4, pady=4)
 miliseconds_label = ttk.Label(click_int, text='milliseconds')
 miliseconds_label.grid(column=7, row=0, padx=4, pady=4,)
@@ -77,6 +85,8 @@ click_type_cb.grid(column=1, row=1, padx=10, pady=5)
 click_type_cb.current(0)
 
 # Click repeat FRAME
+cr_rb = ttk.StringVar(value='repeat00')
+
 click_rep = ttk.Labelframe(opt_rep, text='Click repeat')
 click_rep.grid(column=1, row=0, padx=5, sticky='nsew')
 click_rep.columnconfigure(0, weight=1)
@@ -85,29 +95,31 @@ click_rep.columnconfigure(2, weight=1)
 click_rep.rowconfigure(0, weight=1)
 click_rep.rowconfigure(1, weight=1)
 
-repeat_rb = ttk.Radiobutton(click_rep, text='Repeat')
+repeat_rb = ttk.Radiobutton(click_rep, text='Repeat', variable=cr_rb, value='repeat')
 repeat_rb.grid(column=0, row=0, padx=10, pady=5, sticky='w')
 
-repeat_sb = ttk.Spinbox(click_rep, justify='center', width=5)
+repeat_sb = ttk.Spinbox(click_rep, justify='center', width=5, textvariable=click_rep_var)
 repeat_sb.grid(column=1, row=0, padx=5, pady=5, sticky='w')
 
 repeat_label = ttk.Label(click_rep, text='times')
 repeat_label.grid(column=2, row=0, padx=5, pady=5, sticky='w')
 
-repeat_until = ttk.Radiobutton(click_rep, text='Repeat until stopped')
+repeat_until = ttk.Radiobutton(click_rep, text='Repeat until stopped', variable=cr_rb, value='repeat00')
 repeat_until.grid(column=0, row=1, padx=10, pady=5)
 
 
 # Cursor position FRAME
+cp_rb = ttk.StringVar(value='current')
+
 cursor_pos = ttk.Labelframe(window, text='Cursor position')
 cursor_pos.pack(pady=10,padx=5, fill='x')
 
 
-current_location_rb = ttk.Radiobutton(cursor_pos, text='Current Location')
+current_location_rb = ttk.Radiobutton(cursor_pos, text='Current Location', variable=cp_rb, value='current')
 current_location_rb.pack(side='left', padx=(5, 80), pady=5)
 
 
-picklocation_rb = ttk.Radiobutton(cursor_pos)
+picklocation_rb = ttk.Radiobutton(cursor_pos, variable=cp_rb, value='pick')
 picklocation_rb.pack(side='left', padx=5, pady=5)
 pickloc_button = ttk.Button(cursor_pos, text='Pick location')
 pickloc_button.pack(side='left', padx=5, pady=5)
