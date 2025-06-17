@@ -1,14 +1,14 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-import customtkinter as ctk
+
 
 # Main window
 window = ttk.Window(themename='flatly')
 window.attributes('-topmost', True)
 window.title("Auto Clicker")
 window.resizable(False,False)
-window_width = 565
-window_height = 350
+window_width = 600
+window_height = 380
 comp_width = window.winfo_screenwidth()
 comp_height = window.winfo_screenheight()
 
