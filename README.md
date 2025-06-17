@@ -1,4 +1,4 @@
-# Lounge Lizard
+# Miracle Fruit
 
 ## 📦 Installation Guide
 
@@ -8,7 +8,7 @@ Follow these steps to set up the project locally.
 
 To get started, clone the repository to your local machine using the following command:
 ```bash
-git clone https://github.com/Abeltodoanything/lounge-lizard.git 
+git clone https://github.com/Abeltodoanything/miracle-fruit.git 
 ```
 Then navigate into the project directory:
 ```bash
